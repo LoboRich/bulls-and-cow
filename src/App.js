@@ -1,23 +1,23 @@
-import logo from './logo.svg';
+import React, {useState, useEffect} from 'react';
+import Board from './components/Board';
 import './App.css';
+import Form from './components/Form';
+import SecretNum from './components/SecretNum';
+
 
 function App() {
+
+  const state = {
+    secret: [1, 2, 4, 3]
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="container">
+        <Board />
+        <Form />
+        <SecretNum />
+      </div>
     </div>
   );
 }
