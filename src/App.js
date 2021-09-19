@@ -3,6 +3,7 @@ import Board from './components/Board';
 import './App.css';
 import Form from './components/Form';
 import SecretNum from './components/SecretNum';
+import Guesses from './components/Guesses';
 
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
           <span style={{color: "#716F81"}}>and </span>
           <span style={{color: "#F6AE99"}}>COWS</span>
           </h1>
+        <Guesses />
         <Board />
         <Form />
         <SecretNum secret={state.secret}/>
