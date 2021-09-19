@@ -4,6 +4,10 @@ const SecretNum = () => {
 
   return (
     <div className="randomNumber">
+        <div className="hiddenDigit"></div>
+        <div className="hiddenDigit"></div>
+        <div className="hiddenDigit"></div>
+        <div className="hiddenDigit"></div>
     </div>
   );
 }

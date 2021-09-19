@@ -1,3 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Gluten:wght@800&display=swap');
+body {
+  background-color: #F2E1C1;
+  color: white;
+  font-family: 'Gluten', cursive;
+}
+
+h1 {
+  font-size: 4rem;
+}
+
 .App {
   text-align: center;
 }
@@ -5,9 +16,11 @@
 .container {
   display: grid;
   grid-template-columns: 1fr 1fr; /*left to right*/
-  grid-template-rows: 200px;
+  grid-template-rows: 100px;
   grid-template-areas: 
+    'title title'
     'randomNumber combinations'
+    'form combinations'
     'form combinations'
     'form combinations';
   grid-gap: 10px;
@@ -20,20 +33,65 @@
   margin-top: 5%;
 }
 
+.title {
+  grid-area: title;
+}
+
 .randomNumber {
   grid-area: randomNumber;
-  background-color: red;
+  background-color: transparent;
   height: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-gap: 10px;
+  align-items: center;
+  border-radius: 10px;
 }
 
 .form {
   grid-area: form;
-  background-color: blue;
+  background-color: #F6AE99;
   height: 100%;
+  border-radius: 10px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 0 15px;
+  align-items: center;
+  border-radius: 10px;
+  justify-content:center ;
+  padding: 0 20px 0 20px;
 }
 
 .combinations {
   grid-area: combinations;
-  background-color: violet;
+  background-color: #B97A95;
   height: 100%;
+  border-radius: 10px;
+}
+
+.hiddenDigit {
+  background-color: #716F81;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  height: 70%;
+}
+
+.hiddenDigit::before {
+  content: "\003F";
+  font-size: 3rem;
+  font-weight: 500;
+}
+
+.key {
+  border: 1px solid white;
+  padding: 15px;
+  height: 40%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 500;
+  font-size: 2rem;
+  box-shadow:3px 4px;
 }

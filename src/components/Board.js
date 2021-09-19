@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-const Board = () => {
-
+const Board = (props) => {
+  console.log(props);
   return (
     <div className="combinations">
     </div>
-  );
-}
+    
+    );
+
+  }
 
 export default Board;

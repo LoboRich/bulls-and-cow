@@ -14,9 +14,14 @@ function App() {
   return (
     <div className="App">
       <div className="container">
+        <h1 className='title'>
+          <span style={{color: "#B97A95"}}>BULLS </span>  
+          <span style={{color: "#716F81"}}>and </span>
+          <span style={{color: "#F6AE99"}}>COWS</span>
+          </h1>
         <Board />
         <Form />
-        <SecretNum />
+        <SecretNum secret={state.secret}/>
       </div>
     </div>
   );
