@@ -20,7 +20,7 @@ function App() {
   const keyPress = (number) => {
     if (guesses.includes(number)) return; 
 
-    if(guesses.length <= 4) setGuess([...guesses, number]);
+    if(guesses.length < 4) setGuess([...guesses, number]);
 
     if (guesses.length === 3) {
       const result = checkCombination(secretNum, [...guesses, number]);
