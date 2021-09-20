@@ -12,15 +12,17 @@ const Board = ({answers}) => {
   return (
     <div className="combinations">
       <table>
-        <tr>
-          <th>Bulls</th>
-          <th>Cows</th>
-          <th>Guesses</th>
-        </tr>
-        
-        {answers.map((g, i) => { 
-          return row(g);
-        })}
+        <tbody>
+          <tr>
+            <th>Bulls</th>
+            <th>Cows</th>
+            <th>Guesses</th>
+          </tr>
+          
+          {answers.map((g, i) => { 
+            return row(g);
+          })}
+        </tbody>
       </table>
     </div>
     

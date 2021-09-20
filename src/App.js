@@ -52,7 +52,7 @@ function App() {
   return (
     <div className="App">
       <div className="container">
-        <h1 id={title} className='title' style={{color: title.color}}>{title.text}</h1>
+        <h1 text={title} id={title} className='title' style={{color: title.color}}>{title.text}</h1>
         <Guesses guesses={guesses}/>
         <Board answers={answers}/>
         <Form keyPress={keyPress} remove={remove}/>
