@@ -11,7 +11,10 @@ function App() {
   const [answers, setAnswers] = useState([]);
   const [guesses, setGuess] = useState([]);
   const [status, setStatus] = useState(false);
-  const [title, setTitle] = useState('Bulls and Cow')
+  const [title, setTitle] = useState({
+    text: 'Bulls and Cow',
+    color: '#B97A95'
+  })
 
   const keyPress = (number) => {
     if (guesses.includes(number)) return; 
@@ -25,10 +28,14 @@ function App() {
 
       if(result.bull === 4){
         setStatus(true);
-        setTitle('Bulls Eye!');
+        setTitle({
+          text: 'Bulls Eye!',
+          color: '#6ECB63'
+        });
+        return
       }
-      setGuess([]);
       
+      setGuess([]);
     }
   }
 
@@ -54,7 +61,7 @@ function App() {
   return (
     <div className="App">
       <div className="container">
-        <h1 className='title'>{title}</h1>
+        <h1 className='title' style={{color: title.color}}>{title.text}</h1>
         <Guesses guesses={guesses}/>
         <Board answers={answers}/>
         <Form keyPress={keyPress}/>
