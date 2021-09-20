@@ -50,6 +50,8 @@ h1 {
   align-items: center;
   justify-content: center;
   height: 70%;
+  color: #716F81;
+  font-size: 3rem;
 }
 
 .title {
@@ -113,4 +115,13 @@ h1 {
   font-weight: 500;
   font-size: 2rem;
   box-shadow:3px 4px;
+}
+
+table, td, th {
+  border: 1px solid black;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
 }

@@ -1,17 +1,11 @@
-import React, { Component } from 'react';
-import Form from './Form';
+import React, { Component, useState } from 'react';
+function Guesses({guesses}){
 
-const Guesses = (props) => {
-  console.log('Guess' + props);
-  const state = {
-    guesses: [1,2,3,4]
-  }
   return (
     <div className='guess'>
-      {state.guesses.map((g, i) => { 
-        return  <div className="guessDigit">{g}</div>;
+      {guesses.map((g, i) => { 
+        return  <div id={i} className="guessDigit">{g}</div>;
       })}
-     
     </div>
     
     );

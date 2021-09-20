@@ -7,9 +7,19 @@ import Guesses from './components/Guesses';
 
 
 function App() {
+  const [secretNum, setSecretNum] = useState([1, 2, 4, 3]);
+  const [answers, setAnswers] = useState([]);
+  const [guesses, setGuess] = useState([]);
 
-  const state = {
-    secret: [1, 2, 4, 3]
+  const keyPress = (number) => {
+    if (guesses.includes(number)) return;
+
+    if(guesses.length < 4) setGuess([...guesses, number]);
+
+    if (guesses.length === 3) {
+      setAnswers([...answers, [...guesses, number]]);
+      setGuess([]);
+    }
   }
 
   return (
@@ -20,10 +30,10 @@ function App() {
           <span style={{color: "#716F81"}}>and </span>
           <span style={{color: "#F6AE99"}}>COWS</span>
           </h1>
-        <Guesses />
-        <Board />
-        <Form />
-        <SecretNum secret={state.secret}/>
+        <Guesses guesses={guesses}/>
+        <Board answers={answers}/>
+        <Form keyPress={keyPress}/>
+        <SecretNum secret={secretNum}/>
       </div>
     </div>
   );
