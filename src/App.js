@@ -12,7 +12,7 @@ function App() {
   const [guesses, setGuess] = useState([]);
   const [status, setStatus] = useState(false);
   const [title, setTitle] = useState({
-    text: 'Bulls and Cow',
+    text: 'Bulls and Cows',
     color: '#B97A95'
   })
 

@@ -140,3 +140,20 @@ table {
   width: 100%;
   border-collapse: collapse;
 }
+
+/*Small screens & Laptops*/
+@media only screen and (min-width: 900px) and (max-width: 1024px) {}
+/*Ipads and Tablets*/
+@media only screen and (min-width: 280px) and (max-width: 500px) {
+  .title {
+    font-size: 2rem;
+  }
+
+  .hiddenDigit::before, .showDigit {
+    font-size: 1.5rem;
+  }
+
+  .container {
+    width: 100%;
+  }
+}
