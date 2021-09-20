@@ -3,6 +3,14 @@ import React, { Component } from 'react';
 
 
 const Board = ({answers}) => {
+
+  const row = (data) => {
+    return <tr>
+      <td>{data.bull}</td>
+      <td>{data.cow}</td>
+      <td>{data.guess}</td>
+    </tr>
+  }
   return (
     <div className="combinations">
       <table>
@@ -13,7 +21,7 @@ const Board = ({answers}) => {
         </tr>
         
         {answers.map((g, i) => { 
-          return <tr id={i}><td>{g.bulls}</td><td>{g.cows}</td><td>{g.guess}</td></tr>
+          return row(g);
         })}
       </table>
     </div>

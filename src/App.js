@@ -19,9 +19,11 @@ function App() {
     if (guesses.length === 3) {
       
       const result = checkCombination(secretNum, [...guesses, number]);
-      
-      setAnswers([...answers, [result]]);
-      
+      if (answers.length === 0) {
+        setAnswers([result])
+      } else {
+        setAnswers(answers => [...answers, result])
+      }
       setGuess([]);
     }
   }
