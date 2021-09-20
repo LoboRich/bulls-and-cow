@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import Board from './components/Board';
 import './App.css';
 import Form from './components/Form';
@@ -7,7 +7,7 @@ import Guesses from './components/Guesses';
 
 
 function App() {
-  const [secretNum, setSecretNum] = useState([1, 2, 4, 3]);
+  const [secretNum, setSecretNum] = useState([]);
   const [answers, setAnswers] = useState([]);
   const [guesses, setGuess] = useState([]);
   const [status, setStatus] = useState(false);
@@ -42,9 +42,11 @@ function App() {
   const checkCombination = (secret, guess) => {
     let countBulls = 0
     let countCows = 0
-  
+    console.log(guess);
     for (let i = 0; i < secret.length; i++) {
+      
       if (guess.includes(secret[i]) && secret[i] === guess[i]) {
+        
         countBulls++
       } else if (guess.includes(secret[i])) {
         countCows++
@@ -57,6 +59,19 @@ function App() {
       bull: countBulls
     }
   }
+
+  const generateRandomNumber = () => {
+    const combination = Math.floor(1000 + Math.random() * 9000);
+    return isUnique(combination) ? Array.from(String(combination), Number) : generateRandomNumber()
+  }
+  
+  const isUnique = (combination) => {
+    return !/(.).*?\1/.test(combination)
+  }
+
+  useEffect(() => {
+    setSecretNum(generateRandomNumber())
+  }, [])
 
   return (
     <div className="App">
@@ -72,3 +87,4 @@ function App() {
 }
 
 export default App;
+
