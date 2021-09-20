@@ -52,12 +52,13 @@ function App() {
   return (
     <div className="App">
       <div className="container">
-        <h1 text={title} id={title} className='title' style={{color: title.color}}>{title.text}</h1>
+        <h1 className='title' style={{color: title.color}}>{title.text}</h1>
         <Guesses guesses={guesses}/>
         <Board answers={answers}/>
         <Form keyPress={keyPress} remove={remove}/>
         <SecretNum secret={secretNum} status={status}/>
       </div>
+      {secretNum}
     </div>
   );
 }
@@ -71,13 +72,11 @@ const checkCombination = (secret, guess) => {
   for (let i = 0; i < secret.length; i++) {
     
     if (guess.includes(secret[i]) && secret[i] === guess[i]) {
-      
       countBulls++
     } else if (guess.includes(secret[i])) {
       countCows++
     }
   }
-
   return {
     guess: guess,
     cow: countCows,

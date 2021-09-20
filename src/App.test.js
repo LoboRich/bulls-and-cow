@@ -6,6 +6,7 @@ import App, {
   isUnique
 } from './App'
 
+const random = generateRandomNumber();
 test('render app', () => {
   render(<App />);
   
@@ -33,36 +34,21 @@ describe('Check combination matcher', () => {
   })
   // it('should return Bulls Eye on title', () => {
   //   const result = checkCombination(secret, [5,2,1,8])
-  //   const linkElement = screen.getByText('Bulls Eye!');
-  //   expect(linkElement).toBeInTheDocument(); 
-
-
+  //   const linkElement = screen.getByText(/Bulls Eye/i)
+  //   expect(linkElement).toBeInTheDocument()
   // })
 })
 
 describe('Generate Random Unique number', () => {
+  it('should have a 4 digit number', () => {
+    expect(random.length).toBe(4)
+  })
   it('should generate a random number', () => {
-    const random = generateRandomNumber()
     expect(random).not.toBe(null)
   })
   it('should be unique', () => {
-    const random = generateRandomNumber()
     expect(isUnique(1234)).toBe(true)
     expect(isUnique(1122)).toBe(false)
   })
-  it('should have a 4 digit number', () => {
-    const random = generateRandomNumber()
-    expect(random.length).toBe(4)
-  })
-})
-
-
-describe('Check win validation', () => {
-  it('should check possible matches', () => {
-    const random = generateRandomNumber()
-    const guess = generateRandomNumber()
-    const result = checkCombination(random, guess)
-    expect(typeof result).toBe('object')
-    expect(result.guess && result.cow >= 0 && result.bull >= 0).toBe(true)
-  })
+  
 })
