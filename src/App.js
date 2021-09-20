@@ -68,7 +68,6 @@ export default App;
 const checkCombination = (secret, guess) => {
   let countBulls = 0
   let countCows = 0
-  console.log(guess);
   for (let i = 0; i < secret.length; i++) {
     
     if (guess.includes(secret[i]) && secret[i] === guess[i]) {

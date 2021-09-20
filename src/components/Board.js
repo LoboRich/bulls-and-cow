@@ -2,8 +2,8 @@ import React from 'react';
 
 const Board = ({answers}) => {
 
-  const row = (data) => {
-    return <tr>
+  const row = (data, i) => {
+    return <tr key={i}>
       <td>{data.bull}</td>
       <td>{data.cow}</td>
       <td>{data.guess}</td>
@@ -20,7 +20,7 @@ const Board = ({answers}) => {
           </tr>
           
           {answers.map((g, i) => { 
-            return row(g);
+            return row(g, i);
           })}
         </tbody>
       </table>
