@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import Board from './components/Board';
 import './App.css';
 import Form from './components/Form';
@@ -10,59 +10,58 @@ function App() {
   const [secretNum, setSecretNum] = useState([1, 2, 4, 3]);
   const [answers, setAnswers] = useState([]);
   const [guesses, setGuess] = useState([]);
+  const [status, setStatus] = useState(false);
+  const [title, setTitle] = useState('Bulls and Cow')
 
   const keyPress = (number) => {
-    if (guesses.includes(number)) return;
+    if (guesses.includes(number)) return; 
 
     if(guesses.length <= 4) setGuess([...guesses, number]);
 
     if (guesses.length === 3) {
-      
       const result = checkCombination(secretNum, [...guesses, number]);
-      if (answers.length === 0) {
-        setAnswers([result])
-      } else {
-        setAnswers(answers => [...answers, result])
+      if (answers.length === 0) setAnswers([result])
+      else setAnswers(answers => [...answers, result])
+
+      if(result.bull === 4){
+        setStatus(true);
+        setTitle('Bulls Eye!');
       }
       setGuess([]);
+      
+    }
+  }
+
+  const checkCombination = (secret, guess) => {
+    let countBulls = 0
+    let countCows = 0
+  
+    for (let i = 0; i < secret.length; i++) {
+      if (guess.includes(secret[i]) && secret[i] === guess[i]) {
+        countBulls++
+      } else if (guess.includes(secret[i])) {
+        countCows++
+      }
+    }
+  
+    return {
+      guess: guess,
+      cow: countCows,
+      bull: countBulls
     }
   }
 
   return (
     <div className="App">
       <div className="container">
-        <h1 className='title'>
-          <span style={{color: "#B97A95"}}>BULLS </span>  
-          <span style={{color: "#716F81"}}>and </span>
-          <span style={{color: "#F6AE99"}}>COWS</span>
-          </h1>
+        <h1 className='title'>{title}</h1>
         <Guesses guesses={guesses}/>
         <Board answers={answers}/>
         <Form keyPress={keyPress}/>
-        <SecretNum secret={secretNum}/>
+        <SecretNum secret={secretNum} status={status}/>
       </div>
     </div>
   );
 }
 
 export default App;
-
-const checkCombination = (secret, guess) => {
-
-  let ctrBull = 0
-  let ctrCow = 0
-
-  for (let i = 0; i < secret.length; i++) {
-    if (guess.includes(secret[i]) && secret[i] === guess[i]) {
-      ctrBull++
-    } else if (guess.includes(secret[i])) {
-      ctrCow++
-    }
-  }
-
-  return {
-    guess: guess,
-    cow: ctrCow,
-    bull: ctrBull
-  }
-}
