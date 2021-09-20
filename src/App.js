@@ -44,39 +44,6 @@ function App() {
     setGuess(guesses.slice(0, -1))
   }
 
-  // checks bulls and cows in combination
-  const checkCombination = (secret, guess) => {
-    let countBulls = 0
-    let countCows = 0
-    console.log(guess);
-    for (let i = 0; i < secret.length; i++) {
-      
-      if (guess.includes(secret[i]) && secret[i] === guess[i]) {
-        
-        countBulls++
-      } else if (guess.includes(secret[i])) {
-        countCows++
-      }
-    }
-  
-    return {
-      guess: guess,
-      cow: countCows,
-      bull: countBulls
-    }
-  }
-
-  // generates 4 unique numbers from 1000-9000
-  const generateRandomNumber = () => {
-    const combination = Math.floor(1000 + Math.random() * 9000);
-    return isUnique(combination) ? Array.from(String(combination), Number) : generateRandomNumber()
-  }
-  
-  // Check if combinations are unique
-  const isUnique = (combination) => {
-    return !/(.).*?\1/.test(combination)
-  }
-
   // Load Secret Numbers
   useEffect(() => {
     setSecretNum(generateRandomNumber())
@@ -85,7 +52,7 @@ function App() {
   return (
     <div className="App">
       <div className="container">
-        <h1 className='title' style={{color: title.color}}>{title.text}</h1>
+        <h1 id={title} className='title' style={{color: title.color}}>{title.text}</h1>
         <Guesses guesses={guesses}/>
         <Board answers={answers}/>
         <Form keyPress={keyPress} remove={remove}/>
@@ -97,3 +64,41 @@ function App() {
 
 export default App;
 
+// checks bulls and cows in combination
+const checkCombination = (secret, guess) => {
+  let countBulls = 0
+  let countCows = 0
+  console.log(guess);
+  for (let i = 0; i < secret.length; i++) {
+    
+    if (guess.includes(secret[i]) && secret[i] === guess[i]) {
+      
+      countBulls++
+    } else if (guess.includes(secret[i])) {
+      countCows++
+    }
+  }
+
+  return {
+    guess: guess,
+    cow: countCows,
+    bull: countBulls
+  }
+}
+
+// generates 4 unique numbers from 1000-9000
+const generateRandomNumber = () => {
+  const combination = Math.floor(1000 + Math.random() * 9000);
+  return isUnique(combination) ? Array.from(String(combination), Number) : generateRandomNumber()
+}
+
+// Check if combinations are unique
+const isUnique = (combination) => {
+  return !/(.).*?\1/.test(combination)
+}
+
+export {
+  checkCombination,
+  generateRandomNumber,
+  isUnique
+}
