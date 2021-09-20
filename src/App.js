@@ -14,10 +14,14 @@ function App() {
   const keyPress = (number) => {
     if (guesses.includes(number)) return;
 
-    if(guesses.length < 4) setGuess([...guesses, number]);
+    if(guesses.length <= 4) setGuess([...guesses, number]);
 
     if (guesses.length === 3) {
-      setAnswers([...answers, [...guesses, number]]);
+      
+      const result = checkCombination(secretNum, [...guesses, number]);
+      
+      setAnswers([...answers, [result]]);
+      
       setGuess([]);
     }
   }
@@ -40,3 +44,23 @@ function App() {
 }
 
 export default App;
+
+const checkCombination = (secret, guess) => {
+
+  let ctrBull = 0
+  let ctrCow = 0
+
+  for (let i = 0; i < secret.length; i++) {
+    if (guess.includes(secret[i]) && secret[i] === guess[i]) {
+      ctrBull++
+    } else if (guess.includes(secret[i])) {
+      ctrCow++
+    }
+  }
+
+  return {
+    guess: guess,
+    cow: ctrCow,
+    bull: ctrBull
+  }
+}

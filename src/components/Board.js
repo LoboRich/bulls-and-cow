@@ -9,10 +9,11 @@ const Board = ({answers}) => {
         <tr>
           <th>Bulls</th>
           <th>Cows</th>
-          <th colspan="4">Guesses</th>
+          <th>Guesses</th>
         </tr>
+        
         {answers.map((g, i) => { 
-          return  <tr id={i}>{g}</tr>
+          return <tr id={i}><td>{g.bulls}</td><td>{g.cows}</td><td>{g.guess}</td></tr>
         })}
       </table>
     </div>
