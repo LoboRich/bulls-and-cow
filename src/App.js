@@ -30,7 +30,7 @@ function App() {
       if(result.bull === 4){
         setStatus(true);
         setTitle({
-          text: 'Bulls Eye!',
+          text: 'You got it right!',
           color: '#6ECB63'
         });
         return

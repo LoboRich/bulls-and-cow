@@ -3,19 +3,14 @@ import React from 'react';
 function Form({keyPress,remove}) {
   return (
     <div className="form">
-        <span className='key' onClick={() => keyPress(1)}>1</span>
-        <span className='key' onClick={() => keyPress(2)}>2</span>
-        <span className='key' onClick={() => keyPress(3)}>3</span>
-        <span className='key' onClick={() => keyPress(4)}>4</span>
-        <span className='key' onClick={() => keyPress(5)}>5</span>
-        <span className='key' onClick={() => keyPress(6)}>6</span>
-        <span className='key' onClick={() => keyPress(7)}>7</span>
-        <span className='key' onClick={() => keyPress(8)}>8</span>
-        <span className='key' onClick={() => keyPress(9)}>9</span>
-        <span className='key' onClick={() => keyPress(0)}>0</span>
+        {[1,2,3,4,5,6,7,8,9,0].map((g, i) => { 
+          return  <span key={i} className='key' onClick={() => keyPress(g)}>{g}</span>
+        })}
         <span className='key' onClick={() => remove()}>Del</span>
     </div>
   );
 }
 
 export default Form;
+
+  
