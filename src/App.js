@@ -16,6 +16,7 @@ function App() {
     color: '#B97A95'
   })
 
+  // process clicked number
   const keyPress = (number) => {
     if (guesses.includes(number)) return; 
 
@@ -34,11 +35,16 @@ function App() {
         });
         return
       }
-      
       setGuess([]);
     }
   }
 
+  // removes last element of guesses array value
+  const remove = () => {
+    setGuess(guesses.slice(0, -1))
+  }
+
+  // checks bulls and cows in combination
   const checkCombination = (secret, guess) => {
     let countBulls = 0
     let countCows = 0
@@ -60,15 +66,18 @@ function App() {
     }
   }
 
+  // generates 4 unique numbers from 1000-9000
   const generateRandomNumber = () => {
     const combination = Math.floor(1000 + Math.random() * 9000);
     return isUnique(combination) ? Array.from(String(combination), Number) : generateRandomNumber()
   }
   
+  // Check if combinations are unique
   const isUnique = (combination) => {
     return !/(.).*?\1/.test(combination)
   }
 
+  // Load Secret Numbers
   useEffect(() => {
     setSecretNum(generateRandomNumber())
   }, [])
@@ -79,7 +88,7 @@ function App() {
         <h1 className='title' style={{color: title.color}}>{title.text}</h1>
         <Guesses guesses={guesses}/>
         <Board answers={answers}/>
-        <Form keyPress={keyPress}/>
+        <Form keyPress={keyPress} remove={remove}/>
         <SecretNum secret={secretNum} status={status}/>
       </div>
     </div>

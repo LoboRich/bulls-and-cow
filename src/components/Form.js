@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Form({keyPress}) {
+function Form({keyPress,remove}) {
   return (
     <div className="form">
         <span className='key' onClick={() => keyPress(1)}>1</span>
@@ -12,7 +12,8 @@ function Form({keyPress}) {
         <span className='key' onClick={() => keyPress(7)}>7</span>
         <span className='key' onClick={() => keyPress(8)}>8</span>
         <span className='key' onClick={() => keyPress(9)}>9</span>
-        <span className='key' onClick={() => keyPress(0)} style={{flexGrow:3}}>0</span>
+        <span className='key' onClick={() => keyPress(0)}>0</span>
+        <span className='key' onClick={() => remove()}>Del</span>
     </div>
   );
 }
