@@ -4,7 +4,7 @@ function Guesses({guesses}){
   return (
     <div className='guess'>
       {guesses.map((g, i) => { 
-        return  <div id={i} className="guessDigit">{g}</div>;
+        return  <div key={i} className="guessDigit">{g}</div>;
       })}
     </div>
     
